@@ -3,9 +3,9 @@
 ## Section 1: What I Learned
 I already work with SQL Server, so this course was less about learning SQL from scratch and more about seeing how the same ideas behave in SQLite. I noticed the difference was aggregation. In SQLite, 
 
-'''sql
+```sql
 SELECT CustomerId, SUM(Total) FROM Invoice
-'''
+```
 runs without a GROUP BY and returns one row with CustomerId. SQL Server would throw an error. That sounds friendlier, but it can quietly give wrong answers, so I'll keep the SQL Server habit of always grouping properly. I also learned another way to concatenate strings: SQLite uses `||`, while SQL Server uses `+` or `CONCAT`.
 
 ## Section 2: A Query I Am Proud Of
