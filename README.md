@@ -1,4 +1,4 @@
-# SQL Learning Journal #2: Chinook Database
+# SQL Learning Journal
 
 ## Section 1: What I Learned
 
@@ -56,7 +56,5 @@ The same data could answer two business questions:
 
 1. How many registrations does each team have? (join Registration to Team, then GROUP BY and COUNT)
 2. Which teams have more registrations than the average team? (CTE plus subquery, like my Chinook query)
-
-[Adjust table names to match your real schema, or keep them generic.]
 
 SQL is still widely used because it's standardized, readable, and reliable for structured data, and the skills transfer across SQL Server, SQLite, and other databases.
