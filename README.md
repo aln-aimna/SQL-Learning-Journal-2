@@ -1,10 +1,12 @@
 # SQL Learning Journal
 
 ## Section 1: What I Learned
+I already work with SQL Server, so this course was less about learning SQL from scratch and more about seeing how the same ideas behave in SQLite. I noticed the difference was aggregation. In SQLite, 
 
-I already work with SQL Server, so this course was less about learning SQL from scratch and more about seeing how the same ideas behave in SQLite. The biggest difference was aggregation. In SQLite, `SELECT CustomerId, SUM(Total) FROM Invoice` runs without a GROUP BY and returns one row with an arbitrary CustomerId. SQL Server would throw an error. That sounds friendlier, but it can quietly give wrong answers, so I'll keep the SQL Server habit of always grouping properly. I also learned another way to concatenate strings: SQLite uses `||`, while SQL Server uses `+` or `CONCAT`.
-
-The concept that finally clicked is that CTEs and subqueries aren't competing options. A CTE is a named result I build first and can reuse, and a subquery returns a value or list inside another query. They work well together. I also remembered temp tables like `#table1` in SQL Server. A CTE lives for one statement, while a temp table lasts for the session, so it's better when I need the same result across several queries.
+'''sql
+SELECT CustomerId, SUM(Total) FROM Invoice
+'''
+runs without a GROUP BY and returns one row with CustomerId. SQL Server would throw an error. That sounds friendlier, but it can quietly give wrong answers, so I'll keep the SQL Server habit of always grouping properly. I also learned another way to concatenate strings: SQLite uses `||`, while SQL Server uses `+` or `CONCAT`.
 
 ## Section 2: A Query I Am Proud Of
 
@@ -30,23 +32,17 @@ The CTE `CustomerSpend` joins Customer and Invoice, groups by customer, and sums
 
 The business question is: *which customers spend more than the average customer?* A manager could use this for loyalty offers or to see which countries have the most high-value customers.
 
-[Add one result row, e.g. top customer and amount.]
-
 ## Section 3: A Mistake or Struggle
 
 ```sql
 SELECT TOP 5 * FROM Customer;
 ```
 
-Result: [paste your exact error, likely `near "5": syntax error`].
-
 The cause was pure SQL Server muscle memory. `TOP` is T-SQL; SQLite limits rows with `LIMIT` at the end of the query. The fix:
 
 ```sql
 SELECT * FROM Customer LIMIT 5;
 ```
-
-It was a small error, but it showed me that knowing one dialect well can work against me in another. The same thing happened with GROUP BY: SQLite accepted a query that SQL Server would reject. Next time, before running anything, I'll ask myself which database I'm on, and I'll keep a short cheat sheet of differences: `TOP` vs `LIMIT`, `+` vs `||`, `#temp` tables vs `CREATE TEMP TABLE`. I also learned to read the error message first instead of retyping the query and hoping.
 
 ## Section 4: Connecting to the Real World
 
