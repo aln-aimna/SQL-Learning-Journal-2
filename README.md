@@ -46,11 +46,4 @@ SELECT * FROM Customer LIMIT 5;
 
 ## Section 4: Connecting to the Real World
 
-At work, I had to mass update the registrations of a wave team (a team in a marathon). Instead of writing each UPDATE by hand, I used a regex find-and-replace to turn the list of registrations into an UPDATE statement for every one. It saved time and reduced typing mistakes.
-
-The same data could answer two business questions:
-
-1. How many registrations does each team have? (join Registration to Team, then GROUP BY and COUNT)
-2. Which teams have more registrations than the average team? (CTE plus subquery, like my Chinook query)
-
-SQL is still widely used because it's standardized, readable, and reliable for structured data, and the skills transfer across SQL Server, SQLite, and other databases.
+My recent task at my work, I had to mass update the registrations of a wave team (a team in a marathon). Instead of writing each UPDATE by hand, I used a regex find-and-replace to turn the list of registrations into an UPDATE statement for every one. It saved time and reduced typing mistakes.
